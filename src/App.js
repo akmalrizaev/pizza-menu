@@ -45,19 +45,54 @@ const pizzaData = [
 
 function App() {
   return (
-    <div>
-      <h1>Hello React!</h1>
-      <Pizza />
+    <div className="container">
+      <Header />
+      <Menu />
+      <Footer />
     </div>
+  );
+}
+
+function Header() {
+  // const style = { color: 'red', fontSize: '48px', textTransform: 'uppercase' };
+  const style = {};
+  return (
+    <header className="container">
+      <h1 style={style}>Fast React Pizza Co.</h1>
+    </header>
+  );
+}
+
+function Menu() {
+  return (
+    <main className="menu">
+      <h2>Our Menu</h2>
+      <Pizza />
+      <Pizza />
+      <Pizza />
+    </main>
+  );
+}
+
+function Footer() {
+  const hour = new Date().getHours();
+  const openHour = 8;
+  const closeHour = 22;
+  const isOpen = hour >= openHour && hour <= closeHour;
+  console.log(isOpen);
+  return (
+    <footer className="footer">
+      {new Date().toLocaleTimeString()}. We are currently open
+    </footer>
   );
 }
 
 function Pizza() {
   return (
     <div>
-      <h1>Pizza Prosciutto</h1>
-      <p>Tomato, mozarella, ham, aragula, and burrata cheese</p>
       <img src="../pizzas/prosciutto.jpg" alt="Prosciutto" />
+      <h3>Pizza Prosciutto</h3>
+      <p>Tomato, mozarella, ham, aragula, and burrata cheese</p>
     </div>
   );
 }
